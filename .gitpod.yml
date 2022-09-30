@@ -16,13 +16,13 @@ tasks:
       gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
       clear
       echo "Use this terminal to start your worker."
-      source ~/.bash_aliases
+      source /workspace/edu-101-go-code/.bash_aliases
   - name: Terminal
     command: |
       gp open README.md
       clear
       echo "Use this terminal to run commands.."
-      source ~/.bash_aliases
+      source /workspace/edu-101-go-code/.bash_aliases
     openMode: split-right
   - name: Temporal Local Development Server
     command: |
