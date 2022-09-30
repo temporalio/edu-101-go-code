@@ -25,10 +25,12 @@ func GreetSomeone(ctx workflow.Context, name string) (string, error) {
 	ctx = workflow.WithActivityOptions(ctx, options)
 
 	var spanishGreeting string
-	err := workflow.ExecuteActivity(ctx, GreetInSpanish, name).Get(ctx, &spanishGreeting)
-	if err != nil {
-		return "", err
-	}
+
+    // NOTE: The following lines are commented out since this sample does not include Activity code
+    //err := workflow.ExecuteActivity(ctx, GreetInSpanish, name).Get(ctx, &spanishGreeting)
+	//if err != nil {
+	//	return "", err
+	//}
 
 	return spanishGreeting, nil
 }
