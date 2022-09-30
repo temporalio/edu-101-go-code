@@ -24,6 +24,7 @@ Directory Name                         | Description
 Directory Name                         | Description
 :------------------------------------- | :----------------------------------------------------------------------------------
 `samples/greeting`                     | [The Go function with business logic for first Workflow](samples/greeting)
+`samples/retry-policy`                 | [Example of a Workflow that has a custom Retry Policy](samples/retry-policy)
 
 
 ## Reference
