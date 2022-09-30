@@ -1,0 +1,67 @@
+tasks:
+  - name: Set up aliases 
+    init: cp .bash_aliases ~/.bash_aliases   # ensure new terminals also have access to tctl
+  - name: install staticcheck
+    init: go install honnef.co/go/tools/cmd/staticcheck@latest  # fix for 'Analysis Tools Missing' warning in status bar
+  - name: Go Get Fetcher # https://www.gitpod.io/docs/languages/go/#start-up-tasks
+    init: go get -v -t -d ./...
+  - name: Worker
+    init: |
+      pushd temporal-server
+      docker-compose pull
+      popd
+    command: |
+      gp sync-done dockerpull
+      echo "waiting for server...."
+      gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
+      clear
+      echo "Use this terminal to start your worker."
+      source ~/.bash_aliases
+  - name: Terminal
+    command: |
+      gp open README.md
+      clear
+      echo "Use this terminal to run commands.."
+      source ~/.bash_aliases
+    openMode: split-right
+  - name: Temporal Local Development Server
+    command: |
+      gp sync-await dockerpull
+      cd temporal-server
+      docker-compose up
+    openMode: tab-after
+
+ports:
+  - name: postgres
+    port: 5432
+    onOpen: ignore
+  - name: Temporal server
+    port: 7233
+    onOpen: ignore
+  - name: Temporal Web UI v2
+    port: 8080 # temporal UI
+    description: New (v2) Temporal Web UI
+    onOpen: ignore
+    visibility: private
+  - name: Temporal Web UI v1
+    description: Old (v1) Temporal Web UI
+    port: 8088 # temporal legacy UI
+    onOpen: ignore
+    visibility: private
+  - name: Greeting Service
+    description: Local microservice used in exercises
+    port: 9999
+    onOpen: ignore
+    visibility: private
+
+vscode:
+  extensions:
+    - golang.Go
+    - ms-python.python
+    - redhat.java
+    - vscjava.vscode-java-test
+    - vscjava.vscode-java-debug
+    - wingrunr21.vscode-ruby
+    - ms-toolsai.jupyter
+    - ms-toolsai.jupyter-keymap
+    - ms-toolsai.jupyter-renderers
