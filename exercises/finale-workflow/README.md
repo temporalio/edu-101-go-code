@@ -1,6 +1,6 @@
 # Exercise 4: Finale Workflow
 One of the benefits of Temporal is that it provides SDKs for several
-languages and you can multiple languages in the context of a single
+languages and you can use multiple languages in the context of a single
 Workflow. For example, you might write your Workflow in Go but use
 Java or TypeScript for an Activity in that workflow. 
 
