@@ -5,9 +5,10 @@ package example
 // file is provided here.
 
 import (
+	"time"
+
 	"go.temporal.io/sdk/temporal"
 	"go.temporal.io/sdk/workflow"
-	"time"
 )
 
 func GreetSomeone(ctx workflow.Context, name string) (string, error) {
@@ -26,8 +27,8 @@ func GreetSomeone(ctx workflow.Context, name string) (string, error) {
 
 	var spanishGreeting string
 
-    // NOTE: The following lines are commented out since this sample does not include Activity code
-    //err := workflow.ExecuteActivity(ctx, GreetInSpanish, name).Get(ctx, &spanishGreeting)
+	// NOTE: The following lines are commented out since this sample does not include Activity code
+	//err := workflow.ExecuteActivity(ctx, GreetInSpanish, name).Get(ctx, &spanishGreeting)
 	//if err != nil {
 	//	return "", err
 	//}

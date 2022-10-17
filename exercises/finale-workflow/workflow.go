@@ -1,8 +1,9 @@
 package finale
 
 import (
-	"go.temporal.io/sdk/workflow"
 	"time"
+
+	"go.temporal.io/sdk/workflow"
 )
 
 func CertificateGeneratorWorkflow(ctx workflow.Context, name string) (string, error) {
