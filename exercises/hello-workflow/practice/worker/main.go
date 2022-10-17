@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-	hello "temporal101/exercises/hello-workflow/solution"
+	hello "temporal101/exercises/hello-workflow/practice"
 
 	"go.temporal.io/sdk/client"
 	"go.temporal.io/sdk/worker"
