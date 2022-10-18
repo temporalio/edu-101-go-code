@@ -2,6 +2,10 @@
 This repository provides code used for exercises and demonstrations
 included in the Temporal 101 training course (Go version).
 
+## Run in Gitpod
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-101-go-code)
+
 
 ## Hands-On Exercises
 
