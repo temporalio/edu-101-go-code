@@ -1,10 +1,8 @@
 # Code Repository for Temporal 101 (Go)
 This repository provides code used for exercises and demonstrations
-included in the Temporal 101 training course (Go version).
-
-## Run in Gitpod
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-101-go-code)
+included in the Go version of the 
+[Temporal 101](https://learn.temporal.io/courses/temporal_101) 
+training course.
 
 
 ## Hands-On Exercises
@@ -39,3 +37,13 @@ The following links provide additional information that you may find helpful as 
 * [GitPod Documentation: Troubleshooting](https://www.gitpod.io/docs/troubleshooting)
 
 
+## Exercise Environment for this Course
+You can launch an exercise environment for this course in GitPod by 
+clicking the button below:
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-101-go-code)
+
+Alternatively, you can follow 
+[these instructions](https://learn.temporal.io/getting_started/go/dev_environment/) to 
+set up your own Temporal Cluster with Docker Compose, which you can use as an 
+exercise environment.
