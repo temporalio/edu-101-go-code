@@ -7,7 +7,7 @@ and returns a greeting in Spanish customized for that name.
 Run the service:
 
 ```
-$ go run greeting-service.go
+$ go run greeting-and-farewell-service.go
 ```
 
 On a Mac, you might be prompted by the OS as to whether to allow incoming connections, so approve them if so.
