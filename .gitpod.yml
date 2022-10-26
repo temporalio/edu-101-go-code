@@ -43,11 +43,6 @@ ports:
     description: New (v2) Temporal Web UI
     onOpen: ignore
     visibility: private
-  - name: Temporal Web UI v1
-    description: Old (v1) Temporal Web UI
-    port: 8088 # temporal legacy UI
-    onOpen: ignore
-    visibility: private
   - name: Greeting Service
     description: Local microservice used in exercises
     port: 9999
