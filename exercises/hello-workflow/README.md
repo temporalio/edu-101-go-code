@@ -50,7 +50,7 @@ If you have time, continue with the optional part of the exercise below to see h
 You can run the following command to display the result of a Workflow Execution: 
 
 ```
-tctl workflow observe --workflow_id my-first-workflow
+tctl workflow show --workflow_id my-first-workflow
 ```
 
 It is also possible, and often more convenient, to view this information using the Web UI. You will 
