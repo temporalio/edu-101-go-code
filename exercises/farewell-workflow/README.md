@@ -15,13 +15,13 @@ if you want to check your work, look at the completed example in the
 ## Part A: Write an Activity Function
 The `translate.go` file contains a function (`GreetInSpanish`) that uses a 
 microservice to get a customized greeting in Spanish. This file also contains 
-a utility function ('callService') that the Activity uses to call the microservice. 
+a utility function (`callService`) that the Activity uses to call the microservice. 
 
 1. Open the `translate.go` file (located in the `practice` subdirectory) in the editor
 2. Create a new Activity that will get a custom farewell message from the microservice.
    1. Copy the `GreetInSpanish` function
    2. Rename the new function (use any valid name you like)
-   3. Change '`get-spanish-greeting`" in this new function to "`get-spanish-farewell`"
+   3. Change `get-spanish-greeting` in this new function to `get-spanish-farewell`
    4. Save your changes to this file
 
 ## Part B: Register the Activity Function
