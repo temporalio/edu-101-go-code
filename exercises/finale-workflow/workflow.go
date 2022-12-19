@@ -17,7 +17,7 @@ func CertificateGeneratorWorkflow(ctx workflow.Context, name string) (string, er
 
 	var outFilePath string
 	// NOTE: "CreatePdf" is the Activity Type defined in the implementation of the Java Activity code
-	err := workflow.ExecuteActivity(ctx, "CreatePdf", recipientName).Get(ctx, &outFilePath)
+	err := workflow.ExecuteActivity(ctx, "CreatePdf", name).Get(ctx, &outFilePath)
 	if err != nil {
 		logger.Error("Activity failed.", "Error", err)
 		return "", err
