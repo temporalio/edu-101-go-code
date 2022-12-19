@@ -9,18 +9,28 @@ itself is written in Go, but the Activity that is executed as part
 of this Workflow is written in Java, as is the Worker that runs it.
 Since the Activity is written in Java, it's able to use a Java graphics
 library that would otherwise be would be incompatible with a typical 
-Go program.
+Go program. Since the Workflow and Activities are implemented in two 
+different languages, you'll need to start two Worker programs, one 
+written in Java that will execute the Activity code and one written 
+in Go that will execute the Workflow code.
 
 
 
-
-# Start the Worker (Java)
+# Run the Activity Worker (implemented in Java):
 In one terminal, run the following command:
 
 ```
 $ java -classpath \
-   java-activity-and-worker.jar \
-   io.temporal.training.PdfCertWorker
+    java-activity-and-worker-1.1.jar \
+    io.temporal.training.PdfCertWorker
+```
+
+
+# Run the Workflow Worker (implemented in Go):
+In another terminal, run this command:
+
+```
+$ go run worker/main.go
 ```
 
 # Start the Workflow (Go)
