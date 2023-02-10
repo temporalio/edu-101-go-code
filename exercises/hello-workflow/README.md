@@ -21,10 +21,18 @@ in the `solution` subdirectory.
 2. Specify `greeting-tasks` as the name of the task queue
 3. Save your changes
 
-## Part C: Start the Worker
+## Part C1: Start the Worker
 
 1. Open a terminal window in the environment and change to the `practice` subdirectory for this exercise
-2. Run the following command to start the Worker
+2. Run the following command to download the Go packages needed by the code, which will include the Temporal Go SDK
+
+```
+$ go mod tidy
+```
+
+## Part C2: Start the Worker
+
+2. Run the following command in the terminal window to start the Worker
 
 ```
 $ go run worker/main.go
