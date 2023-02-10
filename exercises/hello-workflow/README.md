@@ -21,10 +21,10 @@ in the `solution` subdirectory.
 2. Specify `greeting-tasks` as the name of the task queue
 3. Save your changes
 
-## Part C1: Start the Worker
+## Part C1: Fetch the Dependencies
 
 1. Open a terminal window in the environment and change to the `practice` subdirectory for this exercise
-2. Run the following command to download the Go packages needed by the code, which will include the Temporal Go SDK
+2. Run the following command to download and install the Go packages needed by the code, which will include the Temporal Go SDK
 
 ```
 $ go mod tidy
