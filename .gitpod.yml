@@ -1,3 +1,4 @@
+image: gitpod/workspace-full:2023-01-16-03-31-28
 tasks:
   - name: Set up aliases 
     init: cp .bash_aliases ~/.bash_aliases   # ensure new terminals also have access to tctl
@@ -60,3 +61,5 @@ vscode:
     - ms-toolsai.jupyter
     - ms-toolsai.jupyter-keymap
     - ms-toolsai.jupyter-renderers
+    - ms-toolsai.vscode-jupyter-cell-tags
+    - ms-toolsai.vscode-jupyter-slideshow
