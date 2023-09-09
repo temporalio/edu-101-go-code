@@ -7,12 +7,12 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"log"
 )
 
 func main() {
-	content, err := ioutil.ReadFile("README.md")
+	content, err := os.ReadFile("README.md")
 
 	if err != nil {
 		log.Fatal(err)
