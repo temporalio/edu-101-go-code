@@ -11,7 +11,7 @@ tasks:
     init: go get -v -t -d ./...
   - name: Restore shell aliases
     before: |
-	  # Runs when workspace is resumed after idle timeout
+      # Runs when workspace is resumed after idle timeout
       cp /workspace/.persist/.bash_alias $HOME;
       exit;
   - name: Install tctl # for backwards compatibility 
