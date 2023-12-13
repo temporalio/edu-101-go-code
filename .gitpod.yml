@@ -16,6 +16,7 @@ tasks:
       exit;
   - name: Install tctl # for backwards compatibility 
     command: |
+      mkdir -p /workspace/bin
       mkdir -p tctl_temp
       pushd tctl_temp
       curl -sL -O https://github.com/temporalio/tctl/releases/download/v1.18.0/tctl_1.18.0_linux_amd64.tar.gz
