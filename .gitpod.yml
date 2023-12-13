@@ -1,11 +1,19 @@
 image: gitpod/workspace-full:2023-01-16-03-31-28
 tasks:
-  - name: Set up aliases 
-    init: cp .bash_aliases ~/.bash_aliases   # ensure that new terminals load the aliases
+  - name: Set up shell aliases 
+    init: 
+	  mkdir -p /workspace/.persist
+	  cp .bash_aliases $HOME/.bash_aliases  # make it available in current session
+	  cp .bash_aliases /workspace/.persist  # so we can restore it if workspace times out
   - name: install staticcheck
     init: go install honnef.co/go/tools/cmd/staticcheck@latest  # fix for 'Analysis Tools Missing' warning in status bar
   - name: Go Get Fetcher # https://www.gitpod.io/docs/languages/go/#start-up-tasks
     init: go get -v -t -d ./...
+  - name: Restore shell aliases
+    before: |
+	  # Runs when workspace is resumed after idle timeout
+      cp /workspace/.persist/.bash_alias $HOME;
+      exit;
   - name: Install tctl # for backwards compatibility 
     command: |
       mkdir -p tctl_temp
