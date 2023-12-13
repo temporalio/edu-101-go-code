@@ -6,25 +6,8 @@ tasks:
     init: go install honnef.co/go/tools/cmd/staticcheck@latest  # fix for 'Analysis Tools Missing' warning in status bar
   - name: Go Get Fetcher # https://www.gitpod.io/docs/languages/go/#start-up-tasks
     init: go get -v -t -d ./...
-  - name: Worker
-    init: |
-      echo "waiting for server...."
-      gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
-      clear
-      echo "Use this terminal to start your worker."
-      source /workspace/edu-101-go-code/.bash_aliases
-  - name: Terminal
-    command: |
-      gp open README.md
-      clear
-      echo "Use this terminal to run commands.."
-      source /workspace/edu-101-go-code/.bash_aliases
-    openMode: split-right
-  - name: Temporal Local Development Server
-    command: |
-      # install the Temporal CLI
-      curl -sSf https://temporal.download/cli.sh | sh -s - --dir /workspace
-      # also install tctl, for backwards compatibility
+  - name: Install tctl # for backwards compatibility 
+    command: 
       mkdir -p tctl_temp
       pushd tctl_temp
       curl -sL -O https://github.com/temporalio/tctl/releases/download/v1.18.0/tctl_1.18.0_linux_amd64.tar.gz
@@ -33,12 +16,30 @@ tasks:
       chmod +x /workspace/bin/tctl
       popd
       rm -rf tctl_temp
+  - name: Temporal Local Development Server
+    init: |
+      # install the Temporal CLI (overriding the default installation directory)
+      curl -sSf https://temporal.download/cli.sh | sh -s - --dir /workspace
     command: |
       source /workspace/edu-101-go-code/.bash_aliases
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
       export TEMPORAL_CORS_ORIGINS=http://localhost:3000
       /workspace/bin/temporal server start-dev --ui-port 8080 --db-filename $HOME/.cluster-persistence.db
+  - name: Worker
+    command: |
+      echo "waiting for server...."
+      gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
+      clear
+      echo "Use this terminal to start your worker."
+      source /workspace/edu-101-go-code/.bash_aliases
     openMode: tab-after
+  - name: Terminal
+    command: |
+      gp open README.md
+      clear
+      echo "Use this terminal to run commands.."
+      source /workspace/edu-101-go-code/.bash_aliases
+    openMode: split-right
 
 ports:
   - name: Temporal server's Frontend service
