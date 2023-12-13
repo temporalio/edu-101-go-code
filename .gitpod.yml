@@ -1,18 +1,13 @@
 image: gitpod/workspace-full:2023-01-16-03-31-28
 tasks:
   - name: Set up aliases 
-    init: cp .bash_aliases ~/.bash_aliases   # ensure new terminals also have access to tctl
+    init: cp .bash_aliases ~/.bash_aliases   # ensure that new terminals load the aliases
   - name: install staticcheck
     init: go install honnef.co/go/tools/cmd/staticcheck@latest  # fix for 'Analysis Tools Missing' warning in status bar
   - name: Go Get Fetcher # https://www.gitpod.io/docs/languages/go/#start-up-tasks
     init: go get -v -t -d ./...
   - name: Worker
     init: |
-      pushd temporal-server
-      docker-compose pull
-      popd
-    command: |
-      gp sync-done dockerpull
       echo "waiting for server...."
       gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
       clear
@@ -27,21 +22,31 @@ tasks:
     openMode: split-right
   - name: Temporal Local Development Server
     command: |
-      gp sync-await dockerpull
-      cd temporal-server
-      docker-compose up
+      # install the Temporal CLI
+      curl -sSf https://temporal.download/cli.sh | sh -s - --dir /workspace
+      # also install tctl, for backwards compatibility
+      mkdir -p tctl_temp
+      pushd tctl_temp
+      curl -sL -O https://github.com/temporalio/tctl/releases/download/v1.18.0/tctl_1.18.0_linux_amd64.tar.gz
+      tar zxvf tctl_1.18*
+      mv tctl /workspace/bin/tctl
+      chmod +x /workspace/bin/tctl
+      popd
+      rm -rf tctl_temp
+    command: |
+      source /workspace/edu-101-go-code/.bash_aliases
+      export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
+      export TEMPORAL_CORS_ORIGINS=http://localhost:3000
+      /workspace/bin/temporal server start-dev --ui-port 8080 --db-filename $HOME/.cluster-persistence.db
     openMode: tab-after
 
 ports:
-  - name: postgres
-    port: 5432
-    onOpen: ignore
-  - name: Temporal server
+  - name: Temporal server's Frontend service
     port: 7233
     onOpen: ignore
-  - name: Temporal Web UI v2
-    port: 8080 # temporal UI
-    description: New (v2) Temporal Web UI
+  - name: Temporal Web UI
+    port: 8080 # custom port, as per --ui-port option above
+    description: Temporal Web UI
     onOpen: ignore
     visibility: private
   - name: Greeting Service
