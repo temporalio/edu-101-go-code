@@ -12,7 +12,7 @@ tasks:
   - name: Restore shell aliases
     before: |
       # Runs when workspace is resumed after idle timeout
-      cp /workspace/.persist/.bash_alias $HOME;
+      cp /workspace/.persist/.bash_aliases $HOME;
       exit;
   - name: Install tctl # for backwards compatibility 
     command: |
