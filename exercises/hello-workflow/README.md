@@ -51,7 +51,7 @@ go run worker/main.go
 
 ```bash
 temporal workflow start \
-    --type HelloWorkflowWorkflow \
+    --type GreetSomeone \
     --task-queue greeting-tasks \
     --workflow-id my-first-workflow \
     --input '"Donna"'
