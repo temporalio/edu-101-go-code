@@ -3,7 +3,7 @@ tasks:
   - name: Set up shell aliases 
     init: |
       mkdir -p /workspace/.persist
-      cp .bash_aliases $HOME/.bash_aliases  # make it available in current session
+      cp .bash_aliases $HOME/               # make it available in current session
       cp .bash_aliases /workspace/.persist  # so we can restore it if workspace times out
   - name: install staticcheck
     init: go install honnef.co/go/tools/cmd/staticcheck@latest  # fix for 'Analysis Tools Missing' warning in status bar
@@ -12,7 +12,7 @@ tasks:
   - name: Restore shell aliases
     before: |
       # Runs when workspace is resumed after idle timeout
-      cp /workspace/.persist/.bash_aliases $HOME;
+      cp /workspace/.persist/.bash_aliases $HOME/;
       exit;
   - name: Install tctl # for backwards compatibility 
     command: |
@@ -34,6 +34,7 @@ tasks:
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
       export TEMPORAL_CORS_ORIGINS=http://localhost:3000
       /workspace/bin/temporal server start-dev --ui-port 8080 --db-filename $HOME/.cluster-persistence.db
+    openMode: tab-after
   - name: Worker
     command: |
       echo "waiting for server...."
@@ -41,7 +42,6 @@ tasks:
       clear
       echo "Use this terminal to start your worker."
       source /workspace/edu-101-go-code/.bash_aliases
-    openMode: tab-after
   - name: Terminal
     command: |
       gp open README.md
