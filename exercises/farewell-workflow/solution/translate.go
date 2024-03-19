@@ -39,8 +39,7 @@ func callService(stem string, name string) (string, error) {
 
 	status := resp.StatusCode
 	if status >= 400 {
-		message := fmt.Sprintf("HTTP Error %d: %s", status, translation)
-		return "", errors.New(message)
+		return "", fmt.Errorf("HTTP Error %d: %s", status, translation)
 	}
 
 	return translation, nil
