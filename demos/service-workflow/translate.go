@@ -27,8 +27,7 @@ func GreetInSpanish(ctx context.Context, name string) (string, error) {
 	translation := string(body)
 	status := resp.StatusCode
 	if status >= 400 {
-		message := fmt.Sprintf("HTTP Error %d: %s", status, translation)
-		return "", errors.New(message)
+		return "", fmt.Errorf("HTTP Error %d: %s", status, translation)
 	}
 
 	return translation, nil
