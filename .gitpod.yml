@@ -2,12 +2,13 @@ image: temporalio/gitpod-edu:1.0
 tasks:
   - name: Set up shell aliases 
     init: |
-	  gp sync-done shellsetup
       # Copy Temporal-specific executables to a directory that is in the $PATH
       sudo cp -L /home/linuxbrew/.linuxbrew/bin/* /usr/local/bin
+      # Set up persistence for shell aliases since $HOME is ephemeral in GitPod
       mkdir -p /workspace/.persist
       cp .bash_aliases $HOME/               # make it available in current session
       cp .bash_aliases /workspace/.persist  # so we can restore it if workspace times out
+      gp sync-done shellsetup
   - name: install staticcheck
     init: go install honnef.co/go/tools/cmd/staticcheck@latest  # fix for 'Analysis Tools Missing' warning in status bar
   - name: Go Get Fetcher # https://www.gitpod.io/docs/languages/go/#start-up-tasks
