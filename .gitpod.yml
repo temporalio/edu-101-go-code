@@ -2,6 +2,7 @@ image: temporalio/gitpod-edu:1.0
 tasks:
   - name: Set up shell aliases 
     init: |
+	  gp sync-done shellsetup
       # Copy Temporal-specific executables to a directory that is in the $PATH
       sudo cp -L /home/linuxbrew/.linuxbrew/bin/* /usr/local/bin
       mkdir -p /workspace/.persist
@@ -21,6 +22,7 @@ tasks:
       exit;
   - name: Temporal Local Development Server
     command: |
+	  gp sync-await shellsetup
       source /workspace/edu-101-go-code/.bash_aliases
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
       export TEMPORAL_CORS_ORIGINS=http://localhost:3000
