@@ -2,6 +2,7 @@ image: temporalio/gitpod-edu:1.0
 tasks:
   - name: Set up shell aliases 
     init: |
+      echo 'export PATH=/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' >> /etc/profile
       mkdir -p /workspace/.persist
       cp .bash_aliases $HOME/               # make it available in current session
       cp .bash_aliases /workspace/.persist  # so we can restore it if workspace times out
@@ -14,12 +15,14 @@ tasks:
       # Runs when workspace is resumed after idle timeout
       cp /workspace/.persist/.bash_aliases $HOME/;
       source /workspace/edu-101-go-code/.bash_aliases
+	  export PATH=/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
       export TEMPORAL_CORS_ORIGINS=http://localhost:3000
       exit;
   - name: Temporal Local Development Server
     command: |
       source /workspace/edu-101-go-code/.bash_aliases
+	  export PATH=/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
       export TEMPORAL_CORS_ORIGINS=http://localhost:3000
       /workspace/bin/temporal server start-dev --ui-port 8080 --db-filename $workspace/.cluster-persistence.db
@@ -58,6 +61,7 @@ vscode:
   extensions:
     - golang.Go
     - ms-python.python
+    - ms-python.debugpy
     - redhat.java
     - vscjava.vscode-java-test
     - vscjava.vscode-java-debug
