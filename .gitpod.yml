@@ -2,7 +2,6 @@ image: temporalio/gitpod-edu:1.0
 tasks:
   - name: Set up shell aliases 
     init: |
-      sudo echo 'export PATH=/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' &gt;&gt; > /etc/profile
       mkdir -p /workspace/.persist
       cp .bash_aliases $HOME/               # make it available in current session
       cp .bash_aliases /workspace/.persist  # so we can restore it if workspace times out
