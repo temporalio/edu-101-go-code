@@ -1,4 +1,4 @@
-image: gitpod/workspace-full:2023-01-16-03-31-28
+image: temporalio/gitpod-edu:1.0
 tasks:
   - name: Set up shell aliases 
     init: |
@@ -13,34 +13,23 @@ tasks:
     before: |
       # Runs when workspace is resumed after idle timeout
       cp /workspace/.persist/.bash_aliases $HOME/;
+      source /workspace/edu-101-go-code/.bash_aliases
+      export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
+      export TEMPORAL_CORS_ORIGINS=http://localhost:3000
       exit;
-  - name: Install tctl # for backwards compatibility 
-    command: |
-      mkdir -p /workspace/bin
-      mkdir -p tctl_temp
-      pushd tctl_temp
-      curl -sL -O https://github.com/temporalio/tctl/releases/download/v1.18.0/tctl_1.18.0_linux_amd64.tar.gz
-      tar zxvf tctl_1.18*
-      mv tctl /workspace/bin/tctl
-      chmod +x /workspace/bin/tctl
-      popd
-      rm -rf tctl_temp
   - name: Temporal Local Development Server
-    init: |
-      # install the Temporal CLI (overriding the default installation directory)
-      curl -sSf https://temporal.download/cli.sh | sh -s - --dir /workspace
     command: |
       source /workspace/edu-101-go-code/.bash_aliases
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
       export TEMPORAL_CORS_ORIGINS=http://localhost:3000
-      /workspace/bin/temporal server start-dev --ui-port 8080 --db-filename $HOME/.cluster-persistence.db
+      /workspace/bin/temporal server start-dev --ui-port 8080 --db-filename $workspace/.cluster-persistence.db
     openMode: tab-after
   - name: Worker
     command: |
       echo "waiting for server...."
       gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
       clear
-      echo "Use this terminal to start your worker."
+      echo "Use this terminal to start your Worker."
       source /workspace/edu-101-go-code/.bash_aliases
   - name: Terminal
     command: |
