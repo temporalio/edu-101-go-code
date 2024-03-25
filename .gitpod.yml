@@ -3,8 +3,7 @@ tasks:
   - name: Set up shell aliases 
     init: |
       # Copy Temporal-specific executables to a directory that is in the $PATH
-      mkdir -p "$HOME/.local/bin"
-      cp -R /home/linuxbrew/.linuxbrew/bin/* "$HOME/.local/bin"
+      sudo cp -L /home/linuxbrew/.linuxbrew/bin/* /usr/local/bin
       mkdir -p /workspace/.persist
       cp .bash_aliases $HOME/               # make it available in current session
       cp .bash_aliases /workspace/.persist  # so we can restore it if workspace times out
