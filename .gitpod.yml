@@ -27,7 +27,7 @@ tasks:
       source /workspace/edu-101-go-code/.bash_aliases
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
       export TEMPORAL_CORS_ORIGINS=http://localhost:3000
-      /usr/local/bin/temporal server start-dev --ui-port 8080 --db-filename $workspace/.cluster-persistence.db
+      /usr/local/bin/temporal server start-dev --ui-port 8080 --db-filename /workspace/.cluster-persistence.db
     openMode: tab-after
   - name: Worker
     command: |
