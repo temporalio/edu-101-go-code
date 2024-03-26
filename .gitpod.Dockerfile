@@ -15,8 +15,8 @@ RUN echo 'export PS1="\[\033[01;34m\]\w\[\033[00m\]\$ "' >> /etc/skel/.bashrc
 
 # Copy Temporal-specific binaries to a directory we can
 # rely on to be in the executable path even after a timeout
-RUN cp -L /home/linuxbrew/.linuxbrew/bin/go /usr/local/bin
-RUN cp -L /home/linuxbrew/.linuxbrew/bin/gofmt /usr/local/bin
-RUN cp -L /home/linuxbrew/.linuxbrew/bin/tctl /usr/local/bin
-RUN cp -L /home/linuxbrew/.linuxbrew/bin/tctl-authorization-plugin /usr/local/bin
-RUN cp -L /home/linuxbrew/.linuxbrew/bin/temporal /usr/local/bin
+#RUN cp -L /home/linuxbrew/.linuxbrew/bin/go /usr/local/bin
+#RUN cp -L /home/linuxbrew/.linuxbrew/bin/gofmt /usr/local/bin
+#RUN cp -L /home/linuxbrew/.linuxbrew/bin/tctl /usr/local/bin
+#RUN cp -L /home/linuxbrew/.linuxbrew/bin/tctl-authorization-plugin /usr/local/bin
+#RUN cp -L /home/linuxbrew/.linuxbrew/bin/temporal /usr/local/bin
