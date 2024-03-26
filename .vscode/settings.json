@@ -1,5 +1,6 @@
 {
     "markdown.styles": ["style.css"]
+	"terminal.integrated.defaultProfile.linux": "bash",
     "workbench.startupEditor": "none",
     "workbench.editorAssociations": 
         {
