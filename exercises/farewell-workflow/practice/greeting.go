@@ -19,11 +19,12 @@ func GreetSomeone(ctx workflow.Context, name string) (string, error) {
 	}
 
 	var spanishFarewell string
-	// TODO: uncomment the line below and change it to execute the Activity function you created
+	// TODO: uncomment the four lines below and change the first one to execute the 
+	// Activity function you created
 	//err = workflow.ExecuteActivity(ctx, GreetInSpanish, name).Get(ctx, &spanishFarewell)
-	if err != nil {
-		return "", err
-	}
+	//if err != nil {
+	//	return "", err
+	//}
 
 	var helloGoodbye = "\n" + spanishGreeting + "\n" + spanishFarewell
 

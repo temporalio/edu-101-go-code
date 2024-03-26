@@ -33,8 +33,8 @@ a utility function (`callService`) that the Activity uses to call the microservi
 
 ## Part C: Modify the Workflow to Execute Your New Activity
 1. Open the `greeting.go` file (located in the `practice` subdirectory) in the editor
-2. Look for the TODO message, uncomment the line below it, and then change that line
-   to execute the Activity function you created
+2. Look for the TODO message, uncomment the lines below it, and then update 
+   this code to execute the Activity function you created
 3. Save your changes to this file
 
 
