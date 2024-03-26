@@ -2,7 +2,6 @@ package farewell
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"io"
 	"net/http"
