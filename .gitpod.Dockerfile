@@ -6,5 +6,5 @@ FROM temporalio/gitpod-edu:1.0
 
 # Append bash aliases to systemwide profile so that 
 # they'll always be available
-RUN cat .bash_aliases >> /etc/profile
+#RUN cat .bash_aliases >> /etc/profile
 
