@@ -1,5 +1,4 @@
-image: 
-  file: .gitpod.Dockerfile
+image: temporalio/gitpod-edu:1.0
 tasks:
   - name: install staticcheck
     init: go install honnef.co/go/tools/cmd/staticcheck@latest  # fix for 'Analysis Tools Missing' warning in status bar
@@ -9,7 +8,7 @@ tasks:
     command: |
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
       export TEMPORAL_CORS_ORIGINS=http://localhost:3000
-      /usr/local/bin/temporal server start-dev --ui-port 8080 --db-filename /workspace/.cluster-persistence.db
+      temporal server start-dev --ui-port 8080 --db-filename /workspace/.cluster-persistence.db
     openMode: tab-after
   - name: Worker
     command: |
