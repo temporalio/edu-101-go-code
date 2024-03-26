@@ -17,7 +17,6 @@ tasks:
       gp ports await 7233 && gp ports await 8080 && gp preview $(gp url 8080)
       clear
       echo "Use this terminal to start your Worker."
-    openMode: split-left
   - name: Terminal
     command: |
       gp open README.md
