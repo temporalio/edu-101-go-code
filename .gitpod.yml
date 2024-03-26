@@ -1,30 +1,12 @@
-image: temporalio/gitpod-edu:1.0
+image: 
+  file: .gitpod.Dockerfile
 tasks:
-  - name: Set up shell aliases 
-    init: |
-      # Copy Temporal-specific executables to a directory that is in the $PATH
-      sudo cp -L /home/linuxbrew/.linuxbrew/bin/* /usr/local/bin
-      # Set up persistence for shell aliases since $HOME is ephemeral in GitPod
-      mkdir -p /workspace/.persist
-      cp .bash_aliases $HOME/               # make it available in current session
-      cp .bash_aliases /workspace/.persist  # so we can restore it if workspace times out
-      gp sync-done shellsetup
   - name: install staticcheck
     init: go install honnef.co/go/tools/cmd/staticcheck@latest  # fix for 'Analysis Tools Missing' warning in status bar
   - name: Go Get Fetcher # https://www.gitpod.io/docs/languages/go/#start-up-tasks
     init: go get -v -t -d ./...
-  - name: Restore shell aliases
-    before: |
-      # Runs when workspace is resumed after idle timeout
-      cp /workspace/.persist/.bash_aliases $HOME/;
-      source /workspace/edu-101-go-code/.bash_aliases
-      export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
-      export TEMPORAL_CORS_ORIGINS=http://localhost:3000
-      exit;
   - name: Temporal Local Development Server
     command: |
-      gp sync-await shellsetup
-      source /workspace/edu-101-go-code/.bash_aliases
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
       export TEMPORAL_CORS_ORIGINS=http://localhost:3000
       /usr/local/bin/temporal server start-dev --ui-port 8080 --db-filename /workspace/.cluster-persistence.db
@@ -32,16 +14,14 @@ tasks:
   - name: Worker
     command: |
       echo "waiting for server...."
-      gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
+      gp ports await 7233 && gp ports await 8080 && gp preview $(gp url 8080)
       clear
       echo "Use this terminal to start your Worker."
-      source /workspace/edu-101-go-code/.bash_aliases
   - name: Terminal
     command: |
       gp open README.md
       clear
       echo "Use this terminal to run commands.."
-      source /workspace/edu-101-go-code/.bash_aliases
     openMode: split-right
 
 ports:
