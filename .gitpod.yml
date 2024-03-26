@@ -38,6 +38,10 @@ ports:
     port: 9999
     onOpen: ignore
     visibility: private
+  - name: Ignore randomly-selected Temporal CLI ports
+    port: 30000-50000
+    onOpen: ignore
+    visibility: private
 
 vscode:
   extensions:
