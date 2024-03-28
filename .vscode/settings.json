@@ -1,11 +1,15 @@
 {
-    "markdown.styles": ["style.css"]
+    "markdown.styles": ["style.css"],
     "terminal.integrated.defaultProfile.linux": "bash",
-    "terminal.integrated.shellArgs.linux": ["-l"],
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "/usr/bin/bash",
+            "args": ["-l"]
+        }
+    },
     "workbench.startupEditor": "none",
-    "workbench.editorAssociations": 
-    {
-        "README.md": "vscode.markdown.preview.editor",
+    "workbench.editorAssociations": {
+        "README.md": "vscode.markdown.preview.editor"
     }
 }
 
