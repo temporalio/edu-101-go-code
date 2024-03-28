@@ -1,10 +1,10 @@
 image: temporalio/gitpod-edu:1.1
 tasks:
-    # task adds the shell config file to a persistent directory
+    # task links a bash configuration file to a location that is not
+    # specific to this course (/etc/bash.bashrc sources it from there)
   - name: Shell configuration
     init: |
-      mv .bash.cfg /workspace
-      gp sync-done shell-config
+      ln /workspace/edu-101-go-code/.bash.cfg /workspace/.bash.cfg
       exit;
     # task fixes the 'Analysis Tools Missing' warning in status bar
   - name: install staticcheck
@@ -23,16 +23,18 @@ tasks:
     openMode: tab-after
   - name: Worker
     command: |
-      gp sync-await shell-config
-      source /workspace/.bash.cfg
+      # use the original file path so that this won't depend on the 
+      # completion of the task above that links this elsewhere (the
+      # Docker image expects it in the same location for every course, 
+      # but this .gitpod.yml file can use course-specific paths)
+      source /workspace/edu-101-go-code/.bash.cfg
       echo "Waiting for server...."
       gp ports await 7233 && gp ports await 8080 && gp preview $(gp url 8080)
       clear
       echo "Use this terminal to start your Worker."
   - name: Terminal
     command: |
-      gp sync-await shell-config
-      source /workspace/.bash.cfg
+      source /workspace/edu-101-go-code/.bash.cfg
       gp open README.md
       clear
       echo "Use this terminal to run commands.."
