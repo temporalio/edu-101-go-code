@@ -25,6 +25,15 @@ tasks:
         --ui-port 8080 \
         --db-filename /workspace/.cluster-persistence.db
     openMode: tab-after
+  - name: Display Web UI
+    command: |
+      echo "Waiting for server...."
+      gp ports await 7233 && gp ports await 8080 && gp preview $(gp url 8080)
+      exit;
+  - name: Display Exercise Instructions
+    command: |
+      gp open README.md
+      exit;
   - name: Worker
     command: |
       # use the original file path so that this won't depend on the 
@@ -32,14 +41,11 @@ tasks:
       # Docker image expects it in the same location for every course, 
       # but this .gitpod.yml file can use course-specific paths)
       source /workspace/edu-101-go-code/.bash.cfg
-      echo "Waiting for server...."
-      gp ports await 7233 && gp ports await 8080 && gp preview $(gp url 8080)
       clear
       echo "Use this terminal to start your Worker."
   - name: Terminal
     command: |
       source /workspace/edu-101-go-code/.bash.cfg
-      gp open README.md
       clear
       echo "Use this terminal to run commands.."
     openMode: split-right
