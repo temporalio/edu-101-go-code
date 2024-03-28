@@ -1,4 +1,7 @@
 {
+    "go.alternateTools": {
+        "go": "/home/linuxbrew/.linuxbrew/bin/go",
+    },
     "markdown.styles": ["style.css"],
     "terminal.integrated.defaultProfile.linux": "bash",
     "terminal.integrated.profiles.linux": {
