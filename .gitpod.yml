@@ -1,18 +1,28 @@
-image: temporalio/gitpod-edu:1.0
+image: temporalio/gitpod-edu:1.1
 tasks:
+    # task adds the shell config file to a persistent directory
+  - name: Shell configuration
+    init: |
+      cp .bash.cfg /workspace
+      exit;
+    # task fixes the 'Analysis Tools Missing' warning in status bar
   - name: install staticcheck
-    init: go install honnef.co/go/tools/cmd/staticcheck@latest  # fix for 'Analysis Tools Missing' warning in status bar
-  - name: Go Get Fetcher # https://www.gitpod.io/docs/languages/go/#start-up-tasks
+    init: go install honnef.co/go/tools/cmd/staticcheck@latest  
+    # task retrieves the project dependencies
+  - name: Go Get Fetcher 
     init: go get -v -t -d ./...
+    # task starts the Temporal Service via the CLI
   - name: Temporal Local Development Server
     command: |
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
       export TEMPORAL_CORS_ORIGINS=http://localhost:3000
-      temporal server start-dev --ui-port 8080 --db-filename /workspace/.cluster-persistence.db
+      temporal server start-dev \
+        --ui-port 8080 \
+        --db-filename /workspace/.cluster-persistence.db
     openMode: tab-after
   - name: Worker
     command: |
-      echo "waiting for server...."
+      echo "Waiting for server...."
       gp ports await 7233 && gp ports await 8080 && gp preview $(gp url 8080)
       clear
       echo "Use this terminal to start your Worker."
