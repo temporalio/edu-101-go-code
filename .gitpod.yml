@@ -3,7 +3,8 @@ tasks:
     # task adds the shell config file to a persistent directory
   - name: Shell configuration
     init: |
-      cp .bash.cfg /workspace
+      mv .bash.cfg /workspace
+      gp sync-done shell-config
       exit;
     # task fixes the 'Analysis Tools Missing' warning in status bar
   - name: install staticcheck
@@ -22,12 +23,16 @@ tasks:
     openMode: tab-after
   - name: Worker
     command: |
+      gp sync-await shell-config
+      source /workspace/.bash.cfg
       echo "Waiting for server...."
       gp ports await 7233 && gp ports await 8080 && gp preview $(gp url 8080)
       clear
       echo "Use this terminal to start your Worker."
   - name: Terminal
     command: |
+      gp sync-await shell-config
+      source /workspace/.bash.cfg
       gp open README.md
       clear
       echo "Use this terminal to run commands.."
