@@ -8,10 +8,14 @@ tasks:
       exit;
     # task fixes the 'Analysis Tools Missing' warning in status bar
   - name: install staticcheck
-    init: go install honnef.co/go/tools/cmd/staticcheck@latest  
+    init: |
+      go install honnef.co/go/tools/cmd/staticcheck@latest
+      exit;
     # task retrieves the project dependencies
   - name: Go Get Fetcher 
-    init: go get -v -t -d ./...
+    init: |
+      go get -v -t -d ./...
+      exit;
     # task starts the Temporal Service via the CLI
   - name: Temporal Local Development Server
     command: |
