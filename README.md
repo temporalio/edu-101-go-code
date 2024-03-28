@@ -44,7 +44,6 @@ clicking the button below:
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-101-go-code)
 
-Alternatively, you can follow 
-[these instructions](https://learn.temporal.io/getting_started/go/dev_environment/) to 
-set up your own Temporal Cluster with Docker Compose, which you can use as an 
-exercise environment.
+Alternatively, you can follow the instructions in the
+"(Optional activity) Setting up a Local Development Environment"
+section in the course to set up a local development environment.
