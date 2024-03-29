@@ -28,7 +28,7 @@ tasks:
   - name: Display Web UI
     command: |
       echo "Waiting for server...."
-      gp ports await 7233 && gp ports await 8080 && gp preview $(gp url 8080)
+      gp ports await 8080 && gp preview $(gp url 8080)
       exit;
   - name: Display Exercise Instructions
     command: |
