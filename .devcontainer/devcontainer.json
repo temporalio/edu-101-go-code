@@ -7,10 +7,12 @@
             ]
         }
     },
+    "forwardPorts": [8080, 7233, 9999],
     "portsAttributes": {
-        "8233": {
-            "label": "Web UI",
+        "8080": {
             "onAutoForward": "openPreview"
         }
-    }
+    },
+    "onCreateCommand": "temporal server start-dev --ui-port 8080",
+    "postAttachCommand": "${command:workbench.action.terminal.split}"
 }
