@@ -13,6 +13,6 @@
             "onAutoForward": "openPreview"
         }
     },
-    "onCreateCommand": "temporal server start-dev --ui-port 8080",
+    "postStartCommand": "temporal server start-dev --ui-port 8080",
     "postAttachCommand": "${command:workbench.action.terminal.split}"
 }
