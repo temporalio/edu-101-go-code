@@ -1,0 +1,16 @@
+{
+    "image": "temporalio/gitpod-edu:1.3",
+    "customizations": {
+        "codespaces": {
+            "openFiles": [
+                "README.md"
+            ]
+        }
+    },
+    "portsAttributes": {
+        "8233": {
+            "label": "Web UI",
+            "onAutoForward": "openPreview"
+        }
+    }
+}
