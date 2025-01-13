@@ -25,11 +25,11 @@ jobs:
         run: go install go.temporal.io/sdk/contrib/tools/workflowcheck@latest
 
       - name: Staticcheck hello-workflow
-        run: staticheck .
+        run: staticcheck .
         working-directory: exercises/hello-workflow/solution/worker
 
       - name: Staticcheck farewell-workflow
-        run: staticheck .
+        run: staticcheck .
         working-directory: exercises/farewell-workflow/solution/worker
 
       - name: Workflowcheck hello-workflow
