@@ -15,7 +15,7 @@ func spanishGreetingHandler(w http.ResponseWriter, r *http.Request) {
 		name := keys[0]
 		translation := fmt.Sprintf("¡Hola, %s!", name)
 		w.WriteHeader(http.StatusOK)
-		fmt.Fprintf(w, translation)
+		fmt.Fprint(w, translation)
 	} else {
 		http.Error(w, "Missing required 'name' parameter.", http.StatusBadRequest)
 	}
@@ -27,7 +27,7 @@ func spanishFarewellHandler(w http.ResponseWriter, r *http.Request) {
 		name := keys[0]
 		translation := fmt.Sprintf("¡Adiós, %s!", name)
 		w.WriteHeader(http.StatusOK)
-		fmt.Fprintf(w, translation)
+		fmt.Fprint(w, translation)
 	} else {
 		http.Error(w, "Missing required 'name' parameter.", http.StatusBadRequest)
 	}

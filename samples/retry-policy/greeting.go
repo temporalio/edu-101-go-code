@@ -23,7 +23,7 @@ func GreetSomeone(ctx workflow.Context, name string) (string, error) {
 		StartToCloseTimeout: time.Second * 5,
 		RetryPolicy:         retrypolicy,
 	}
-	ctx = workflow.WithActivityOptions(ctx, options)
+	workflow.WithActivityOptions(ctx, options)
 
 	var spanishGreeting string
 
