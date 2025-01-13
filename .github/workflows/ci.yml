@@ -17,5 +17,14 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: "1.22"
+
       - name: CI Build
         run: make ci-build
+
+      - name: Build hello-workflow
+        run: go build
+        working-directory: exercises/hello-workflow/solution/worker
+
+      - name: Build farewell-workflow
+        run: go build
+        working-directory: exercises/farewell-workflow/solution/worker
