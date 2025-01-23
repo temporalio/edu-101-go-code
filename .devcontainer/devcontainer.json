@@ -8,10 +8,5 @@
         }
     },
     "forwardPorts": [8080, 7233, 9999],
-    "portsAttributes": {
-        "8080": {
-            "onAutoForward": "openPreview"
-        }
-    },
     "postStartCommand": "temporal server start-dev --ui-port 8080"
 }
