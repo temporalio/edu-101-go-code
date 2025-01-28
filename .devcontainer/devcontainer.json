@@ -1,5 +1,5 @@
 {
-    "image": "temporalio/gitpod-edu:1.3",
+    "image": "temporalio/gitpod-edu:1.4",
     "customizations": {
         "codespaces": {
             "openFiles": [
@@ -10,7 +10,6 @@
     "forwardPorts": [8080, 7233, 9999],
     "postStartCommand": "temporal server start-dev --ui-port 8080",
     "remoteEnv": {
-        "PROMPT_DIRTRIM": "2",
-        "PS1": "\\u$:\\W\\$ "
+        "PROMPT_DIRTRIM": "2"
     }
 }
