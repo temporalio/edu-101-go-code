@@ -41,10 +41,8 @@ The following links provide additional information that you may find helpful as 
 
 
 ## Exercise Environment for this Course
-You can launch an exercise environment for this course in GitPod by 
-clicking the button below:
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-101-go-code)
+You can launch an exercise environment for this course using GitHub Codespaces by 
+following [this](codespaces.md) walkthrough.
 
 Alternatively, you can follow the instructions in the
 "(Optional activity) Setting up a Local Development Environment"
