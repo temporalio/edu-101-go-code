@@ -41,10 +41,15 @@ The following links provide additional information that you may find helpful as 
 
 
 ## Exercise Environment for this Course
-You can launch an exercise environment for this course in GitPod by 
-clicking the button below:
+
+You can launch an exercise environment for this course using Gitpod or Codeanywhere:
+
+### 🌐 Gitpod
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-101-go-code)
+
+### 🌍 Codeanywhere
+[![Open in Codeanywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/temporalio/edu-101-go-code)
 
 Alternatively, you can follow the instructions in the
 "(Optional activity) Setting up a Local Development Environment"
