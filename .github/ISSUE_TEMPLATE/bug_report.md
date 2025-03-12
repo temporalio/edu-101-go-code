@@ -35,7 +35,7 @@ If applicable, add screenshots to help explain your problem.
  - OS: [e.g. iOS8.1]
  - Browser [e.g. stock browser, safari]
  - Version [e.g. 22]
-- Are you using Gitpod or developing locally? 
+- Are you using the browser environment or developing locally? 
 
 **Additional context**
 Add any other context about the problem here.
