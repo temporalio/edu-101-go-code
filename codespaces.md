@@ -57,3 +57,12 @@ You’re all set. Don’t forget that you can Ctrl+click on the links displayed 
 Your Codespace will automatically be stopped 30 minutes after you close the browser tab. This is to prevent excessive resource utilization. It can be resumed from the same part of the Github UI if needed, within 30 days of the last time it was used.
 
 ![12 — Resume Codespace](https://raw.githubusercontent.com/temporalio/temporal-learning/refs/heads/main/static/courses/common/codespaces/12-resume-codespace.png)
+
+### Delete Your Codespaces
+
+Once you are done with this course or the exercises, manually delete your codespaces. There are costs associated with storing codespaces. You should therefore delete any codespaces you no longer need. Here are the steps you need to take to delete your codespaces:
+
+1. Visit your codespaces page [here](https://github.com/codespaces).
+2. To the right of the codespace you want to delete, click the three dots, then click `Delete`:
+
+![Delete codespace](https://learn.temporal.io/courses/common/codespaces/13-delete-codespaces.png "Delete codespace")
