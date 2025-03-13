@@ -57,6 +57,8 @@ temporal workflow start \
     --input '"Donna"'
 ```
 
+Notice the quoting for the input value, which has double quotes inside of single quotes. The input passed to the `temporal` command must be provided in JSON format and the quoting used here is necessary to pass the value through the shell and into the Workflow in the correct format.
+
 Note that this command starts the Workflow, but it does not wait for 
 it to complete or show the result. 
 
