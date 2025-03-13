@@ -65,6 +65,16 @@ it to complete or show the result.
 If you have time, continue with the optional part of the exercise 
 below to see how to use the `temporal` command to display the result.
 
+### Using the CLI to Start a Workflow with Windows
+
+The mix of single and double quotes we currently have pertains to UNIX-style shells. However, If you are running the Temporal CLI in Windows (such as Powershell), you will need to use Windows-style quote escaping like this:
+
+```
+temporal workflow start --type GreetSomeone --task-queue greeting-tasks --workflow-id my-first-workflow --input '\"Donna\"'
+```
+
+This is a general Windows approach for handling quotes in parameters, not something specific to Temporal.
+
 ## Part E (Optional): Display the Result
 You can run the following command to display the result of a Workflow Execution: 
 
