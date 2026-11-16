@@ -8,7 +8,7 @@ import (
 
 func GreetSomeone(ctx workflow.Context, name string) (string, error) {
 	options := workflow.ActivityOptions{
-		StartToCloseTimeout: time.Second * 5,
+		StartToCloseTimeout: time.Second * 10,
 	}
 	ctx = workflow.WithActivityOptions(ctx, options)
 

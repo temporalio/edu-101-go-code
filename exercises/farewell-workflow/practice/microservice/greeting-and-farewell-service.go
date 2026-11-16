@@ -7,9 +7,11 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func spanishGreetingHandler(w http.ResponseWriter, r *http.Request) {
+	time.Sleep(3 * time.Second)
 	keys, ok := r.URL.Query()["name"]
 	if ok {
 		name := keys[0]
@@ -22,6 +24,7 @@ func spanishGreetingHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func spanishFarewellHandler(w http.ResponseWriter, r *http.Request) {
+	time.Sleep(5 * time.Second)
 	keys, ok := r.URL.Query()["name"]
 	if ok {
 		name := keys[0]
